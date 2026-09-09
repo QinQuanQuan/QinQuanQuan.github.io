@@ -1,203 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="QUANQUAN">
-
-
-    <meta name="subtitle" content="blog">
-
-
-    <meta name="description" content="My blog (share something about my subject.)">
-
-
-
-<title>quanquan</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 7.0.0"></head>
-
+<title>Quanquan's Blog · 已迁移</title>
+<meta name="description" content="原博客内容已迁移至 hisblog23.qinquanquan.com，本站仅为占位页面。">
+<style>
+  :root { color-scheme: light dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f6f8fa; color: #1f2328;
+    display: flex; align-items: center; justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0d1117; color: #e6edf3; }
+    .card { background: #161b22; border: 1px solid #30363d; }
+    .card a { color: #58a6ff; }
+    .divider { border-color: #30363d; }
+  }
+  .card {
+    max-width: 560px; margin: 24px; padding: 48px 40px;
+    background: #fff; border: 1px solid #d0d7de; border-radius: 12px;
+    text-align: center; box-shadow: 0 8px 24px rgba(140,149,159,.12);
+  }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: .5px; }
+  p { margin-top: 16px; font-size: 15px; line-height: 1.8; color: inherit; opacity: .78; }
+  .card a { color: #0969da; font-weight: 600; text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+  .divider { border: none; border-top: 1px solid #d0d7de; margin: 24px 0 0; }
+  .meta { margin-top: 14px; font-size: 12px; opacity: .55; }
+</style>
+</head>
 <body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Quanquan&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Quanquan&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                
-    <div class="container profile-container">
-    <div class="intro">
-        <div class="avatar">
-            <a href="/archives"><img src="/image/avatar.jpeg"></a>
-        </div>
-        <div class="nickname">Qin Quanquan</div>
-        <div class="description"><p>和光同尘，与时舒卷。 <br> 在此分享一些个人学习总结，欢迎大佬们一起交流学习及批评指正。</p>
-</div>
-        <div class="links">
-            
-                
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Category" href="/category">
-                        
-                        
-                            <i class="iconfont icon-category"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="ZhiHu" target="_blank" rel="noopener" href="https://www.zhihu.com/people/qin-95-59">
-                        
-                        
-                            <i class="iconfont icon-zhihu"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="YouTube" target="_blank" rel="noopener" href="https://space.bilibili.com/38609875">
-                        
-                        
-                            <i class="iconfont icon-youtube"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="WeChat" href="">
-                        
-                        
-                            <i class="iconfont icon-wechat"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="QQ" href="/image/add_QQgroup.jpg">
-                        
-                        
-                            <i class="iconfont icon-qq"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/QjhQuanQuan">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
-                
-            
-        </div>
-    </div>
-</div>
-
-
-            </div>
-            <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© QUANQUAN | Powered by Hexo & Chic </span>
-    </div>
-</footer>
-    </div>
+  <main class="card">
+    <h1>Quanquan's Blog</h1>
+    <p>原博客的全部内容已迁移归档，本站不再更新。<br>
+       请访问新地址：<a href="https://hisblog23.qinquanquan.com" rel="noopener">hisblog23.qinquanquan.com</a></p>
+    <hr class="divider">
+    <div class="meta">qinquanquan.com · 旧站占位页</div>
+  </main>
 </body>
-
 </html>
