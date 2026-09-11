@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import WikiLayout from "@/layouts/WikiLayout.astro";
+
+export async function getStaticPaths() {
+  const wikiEntries = await getCollection("wiki");
+
+  return wikiEntries.map((entry) => {
+    const slug = entry.id === "index" ? undefined : entry.id;
+
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const { title, description, createdAt, updatedAt, tags, growthStage } =
+  entry.data;
+---
+
+<WikiLayout
+  title={title}
+  description={description ?? title}
+  headings={headings}
+  tags={tags}
+  createdAt={createdAt}
+  updatedAt={updatedAt}
+  growthStage={growthStage}
+  rawContent={entry.body}
+  downloadFilename={entry.id.split("/").pop()}
+>
+  <article class="custom-prose max-w-none">
+    <Content />
+  </article>
+</WikiLayout>

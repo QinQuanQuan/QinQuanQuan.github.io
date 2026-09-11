@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import WikiNavNode, { type TreeNode } from "./WikiNavNode.astro";
+import { folderLabel } from "@/lib/wiki/labels";
+import { sortTreeNodes } from "@/lib/wiki/tree-utils";
+
+const allNotes = await getCollection("wiki");
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
+
+function humanize(slug: string): string {
+  const label = folderLabel(slug);
+  if (label !== slug) return label;
+
+  return slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+function makeTreeNode(
+  segment: string,
+  isFile: boolean,
+  note: (typeof allNotes)[number],
+): TreeNode {
+  return {
+    label: isFile ? note.data.title : humanize(segment),
+    href: isFile
+      ? note.id === "index"
+        ? "/wiki"
+        : `/wiki/${note.id}`
+      : undefined,
+    children: {},
+  };
+}
+
+function updateFileNode(node: TreeNode, note: (typeof allNotes)[number]): void {
+  node.href = note.id === "index" ? "/wiki" : `/wiki/${note.id}`;
+  node.label = note.data.title;
+}
+
+function buildTree(notes: typeof allNotes): Record<string, TreeNode> {
+  const root: Record<string, TreeNode> = {};
+
+  for (const note of notes) {
+    const segments = note.id.split("/");
+    let currentLevel = root;
+    for (let i = 0; i < segments.length; i++) {
+      const segment = segments[i];
+      const isFile = i === segments.length - 1;
+
+      if (!currentLevel[segment]) {
+        currentLevel[segment] = makeTreeNode(segment, isFile, note);
+      } else if (isFile) {
+        updateFileNode(currentLevel[segment], note);
+      }
+      currentLevel = currentLevel[segment].children;
+    }
+  }
+
+  return root;
+}
+
+const root = buildTree(allNotes);
+const sortedRootKeys = sortTreeNodes(root);
+---
+
+<nav class="space-y-0.5">
+  {
+    sortedRootKeys.map((key) => (
+      <WikiNavNode
+        node={root[key]}
+        depth={0}
+        currentPath={currentPath}
+        class="pb-4"
+      />
+    ))
+  }
+</nav>

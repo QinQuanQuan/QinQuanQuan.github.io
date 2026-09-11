@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ArrowRight } from "@lucide/astro";
+import { Kbd } from "@/components/ui/kbd";
+import { SITE } from "@/lib/site-config";
+import { folderLabel } from "@/lib/wiki/labels";
+import { getCategorizedNotes } from "@/lib/wiki/get-categorized-notes";
+import NoteCard from "@/components/wiki/NoteCard.astro";
+
+const categories = await getCategorizedNotes();
+---
+
+<BaseLayout title={`${SITE.title} - 首页`}>
+  <main class="mx-auto max-w-5xl px-4 py-16 md:py-24" data-pagefind-body>
+    <header class="mb-16">
+      <h1 class="text-3xl font-bold tracking-tight md:text-4xl">
+        {SITE.name}
+      </h1>
+      <p class="mt-3 text-muted-foreground">
+        一个持续生长的个人知识库。随时按下 <Kbd class="mx-1">⌘K</Kbd> 搜索笔记。
+      </p>
+    </header>
+
+    {
+      categories.map(({ name, notes }) => (
+        <section class="mb-14">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            {folderLabel(name)} &middot; {notes.length} 篇笔记
+          </h2>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {notes.map((note) => (
+              <NoteCard
+                id={note.id}
+                title={note.title}
+                description={note.description}
+                growthStage={note.growthStage}
+              />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <footer class="flex justify-center">
+      <a
+        href="/tags"
+        class="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        浏览全部标签
+        <ArrowRight class="size-4" />
+      </a>
+    </footer>
+  </main>
+</BaseLayout>
