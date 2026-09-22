@@ -32,4 +32,4 @@ growthStage: "seedling"
 ## 相关笔记
 
 - [[digital-garden]]
-- [[writing-guide]]
+- [[astro-veka-setup]]

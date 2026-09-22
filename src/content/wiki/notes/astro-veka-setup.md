@@ -55,6 +55,6 @@ growthStage: "budding"
 
 ## 相关笔记
 
-- [[writing-guide]]
 - [[site-roadmap]]
-- [[about-me]]
+- [[markdown-syntax]]
+- [[digital-garden]]

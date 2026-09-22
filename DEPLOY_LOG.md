@@ -156,3 +156,13 @@ src/content/wiki/
 - 访问地址：https://blogmanage.quanquantest.bond（临时；待 `blogmanage.qinquanquan.com`
   的 A 记录加到正确域名后切换）
 - 说明文档：服务器上 `/home/ubuntu/blog-admin/使用说明.md`
+
+## 追加：内容结构调整（2026-09-22 晚）
+
+- 《首页》与《关于本站》两篇笔记内容重叠，已合并为一篇：`src/content/wiki/index.md`
+  （标题「关于本站」，仍是知识库首页 `/wiki`），`about/about-me.md` 已删除，
+  `about` 类别随之取消。
+- 内部向的《写作与发布指南》从站点下架，移到 `docs/writing-guide.md`（保留在仓库，不参与构建），
+  `guides` 类别随之取消。
+- `src/data/categories.json` 现只保留 `notes` / `projects` 两类。
+- 全站交叉引用已同步清理，构建产物中不再有指向 about-me / writing-guide 的链接。

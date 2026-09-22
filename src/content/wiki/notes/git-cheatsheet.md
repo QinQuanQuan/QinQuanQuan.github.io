@@ -57,6 +57,5 @@ git push origin master      # 本站推送到 master 后会自动触发 Pages �
 
 ## 相关笔记
 
-- [[writing-guide]]
 - [[astro-veka-setup]]
 - [[markdown-syntax]]

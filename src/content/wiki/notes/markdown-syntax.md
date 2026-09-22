@@ -76,6 +76,5 @@ $$
 
 ## 相关笔记
 
-- [[writing-guide]]
 - [[git-cheatsheet]]
 - [[astro-veka-setup]]

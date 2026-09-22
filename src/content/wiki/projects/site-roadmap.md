@@ -38,4 +38,3 @@ growthStage: "seedling"
 
 - [[astro-veka-setup]]
 - [[digital-garden]]
-- [[writing-guide]]

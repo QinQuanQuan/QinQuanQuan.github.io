@@ -24,8 +24,6 @@ growthStage: "seedling"
 | --- | --- | --- |
 | 速查 | `notes/` | 可以直接是清单，但必须准确 |
 | 项目 | `projects/` | 需要有明确的阶段目标 |
-| 指南 | `guides/` | 需要可以被自己照着执行 |
-| 关于 | `about/` | 稳定不变 |
 
 ## 里程碑
 
@@ -37,7 +35,6 @@ growthStage: "seedling"
 
 ## 相关笔记
 
-- [[about-me]]
-- [[writing-guide]]
 - [[site-roadmap]]
 - [[reading-list]]
+- [[astro-veka-setup]]
