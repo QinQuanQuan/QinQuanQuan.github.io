@@ -141,3 +141,18 @@ src/content/wiki/
 3. `public/favicon.svg`、`public/favicon.ico` 仍是主题自带的图标，建议替换为个人图标。
 4. 后续只需在 `src/content/wiki/` 下增删 Markdown 文件并推送到 `master`，站点会自动重建。
 5. 若确认不再需要旧的占位页，可删除 `backup/placeholder-site` 分支。
+
+---
+
+# 追加：后台管理系统（blog-admin）
+
+- 时间：2026-09-22
+- 目标：在腾讯云轻量服务器上自建轻量后台，用浏览器完成文章的撰写/编辑/删除/发布与类别管理
+- 方案：子域名接入（方案 A）——主站保持 GitHub Pages 不变，后台单独一个域名指向服务器
+- 实现：Flask + waitress（仅监听 127.0.0.1:8090），Caddy 以 HTTPS 反代；
+  「发布」= 通过 GitHub REST API 提交 Markdown 到 master，由 Actions 重建站点
+- 站点侧改动：类别中文名改由 `src/data/categories.json` 提供（`src/lib/wiki/labels.ts` 读取），
+  因此后台新建类别时可以同时维护中文显示名
+- 访问地址：https://blogmanage.quanquantest.bond（临时；待 `blogmanage.qinquanquan.com`
+  的 A 记录加到正确域名后切换）
+- 说明文档：服务器上 `/home/ubuntu/blog-admin/使用说明.md`
