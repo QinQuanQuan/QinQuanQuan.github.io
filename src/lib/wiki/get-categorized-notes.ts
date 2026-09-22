@@ -22,7 +22,21 @@ function byUpdatedAtDesc(
   return b.updatedAt.valueOf() - a.updatedAt.valueOf();
 }
 
-function byNameAsc(a: { name: string }, b: { name: string }): number {
+/**
+ * 首页分组（类别）的显示顺序：
+ * 固定排在前面的分组，其余按目录名字母序排列。
+ * overview 对应知识库首页（src/content/wiki/index.md）。
+ */
+const CATEGORY_ORDER = ["overview"];
+
+function byCategoryOrder(a: { name: string }, b: { name: string }): number {
+  const ai = CATEGORY_ORDER.indexOf(a.name);
+  const bi = CATEGORY_ORDER.indexOf(b.name);
+  if (ai !== bi) {
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
+  }
   return a.name.localeCompare(b.name);
 }
 
@@ -50,5 +64,5 @@ export async function getCategorizedNotes(): Promise<CategorizedNote[]> {
       name,
       notes: notes.sort(byUpdatedAtDesc),
     }))
-    .sort(byNameAsc);
+    .sort(byCategoryOrder);
 }
