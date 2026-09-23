@@ -3,7 +3,7 @@ title: 基于 Astro（Veka 主题）+ Github Pages 搭建本站
 description: 记录本站的技术选型与搭建过程：Astro 静态站点、Veka 主题、GitHub Pages 自动化部署。
 createdAt: '2026-09-11'
 updatedAt: '2026-09-23'
-tags: [Astro, Veka, 建站, blog]
+tags: [Astro, Veka, 建站, blog, Github, Pages]
 isPinned: false
 growthStage: budding
 ---
