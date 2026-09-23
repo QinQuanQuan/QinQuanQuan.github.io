@@ -52,9 +52,3 @@ growthStage: budding
 
 1. 主题模板把包管理器锁定为某个特定 pnpm 版本，本地安装时需要换成可用版本（已在 `package.json` 中更新 `packageManager` 字段）。
 2. 构建产物必须包含 `.nojekyll` 或使用 Actions 部署，否则以下划线开头的资源目录会被 Jekyll 忽略。
-
-## 相关笔记
-
-- [[site-roadmap]]
-- [[markdown-syntax]]
-- [[digital-garden]]
