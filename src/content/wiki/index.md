@@ -1,11 +1,11 @@
 ---
-title: "关于本站"
-description: "本站是什么、为什么写、写些什么：一个持续生长的个人数字花园。"
-createdAt: 2026-09-11
-updatedAt: 2026-09-22
-tags: ["关于", "数字花园", "总览"]
+title: 关于本站
+description: 本站是什么、为什么写、写些什么：一个持续生长的个人数字花园。
+createdAt: '2026-09-11'
+updatedAt: '2026-09-23'
+tags: [关于, 数字花园, 总览]
 isPinned: true
-growthStage: "evergreen"
+growthStage: evergreen
 ---
 
 🌱 欢迎来到我的数字花园。这里是 **QinQuanQuan** 的个人站点，部署在 GitHub Pages 上，通过 `qinquanquan.com` 访问。
@@ -31,9 +31,6 @@ growthStage: "evergreen"
 
 按下 <kbd>⌘</kbd> + <kbd>K</kbd>（Windows 下为 <kbd>Ctrl</kbd> + <kbd>K</kbd>）可以全站搜索；页面右侧的目录能快速跳到当前笔记的小节。
 
-> [!TIP]
-> 笔记之间用 `[[双链]]` 相互连接，顺着链接读下去，就是一条属于我自己的知识路径。
-
 ## 技术实现
 
 本站基于 [Astro](https://astro.build) 静态站点框架，主题使用 Astro 官方主题库里的免费模板 **Veka**：零配置路由（目录即导航）、构建期生成索引的本地全文搜索、Tailwind CSS v4 与深浅色自动切换。搭建过程记录在 [[astro-veka-setup]] 里。
@@ -48,9 +45,3 @@ growthStage: "evergreen"
 
 - GitHub：[@QinQuanQuan](https://github.com/QinQuanQuan)
 - 站点地址：<https://qinquanquan.com>
-
-## 相关笔记
-
-- [[astro-veka-setup]]
-- [[digital-garden]]
-- [[site-roadmap]]
