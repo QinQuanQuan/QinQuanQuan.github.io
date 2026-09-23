@@ -1,27 +1,30 @@
 ---
-title: "站点待办"
-description: "本站后续要做的功能与优化项清单，按优先级排列。"
-createdAt: 2026-09-11
-updatedAt: 2026-09-11
-tags: ["项目", "待办", "Astro"]
+title: 站点待办
+description: 本站后续要做的功能与优化项清单，按优先级排列。
+createdAt: '2026-09-11'
+updatedAt: '2026-09-23'
+tags: [项目, 待办, Astro]
 isPinned: false
-growthStage: "seedling"
+growthStage: seedling
 ---
 
 ## 待办
 
-- [ ] 替换站点图标与社交分享图（`public/favicon.svg`、`public/og-image.png`）。
-- [ ] 在 `src/lib/site-config.ts` 中把站点名和描述改成最终版本。
 - [ ] 为笔记补充标签，让标签页有实际聚合效果。
 - [ ] 增加「全部笔记」归档页，按更新时间排序。
 - [ ] 检查移动端侧边栏抽屉的交互细节。
+- [ ] 每个目录类别增加独立的汇总页，点开具体的文章后现在文章最上面的路径只能返回首页，显示的知识库、目录类别两个路径不能点击返回，需要完善功能。
+- [ ] 后台管理系统增加功能，支持UI界面直接修改不能类别展示的顺序。
+- [ ] 后台管理系统增加功能，支持UI界面进行管理员账号密码重命名，重置。
+- [ ] 后台管理系统增加功能，支持浏览量、访客等相关信息的可视化查询与统计。
 
 ## 已完成
 
-- [x] 清空原有占位页面，改用 Astro + Veka 主题。
-- [x] 配置 GitHub Actions 自动构建并部署到 GitHub Pages。
-- [x] 绑定自定义域名 `qinquanquan.com` 并启用 HTTPS。
-- [x] 界面文案中文化。
+- [✅] 清空原有占位页面，改用 Astro + Veka 主题。
+- [✅] 配置 GitHub Actions 自动构建并部署到 GitHub Pages。
+- [✅] 绑定自定义域名 `qinquanquan.com` 并启用 HTTPS。
+- [✅] 界面文案中文化。
+- [✅] 增加后台管理系统，UI界面直接创作并发布文章，管理站点。
 
 ## 备注
 
