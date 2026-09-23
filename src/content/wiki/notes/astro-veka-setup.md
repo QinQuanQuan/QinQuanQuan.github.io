@@ -1,11 +1,11 @@
 ---
-title: "用 Astro + Veka 搭建本站"
-description: "记录本站的技术选型与搭建过程：Astro 静态站点、Veka 主题、GitHub Pages 自动化部署。"
-createdAt: 2026-09-11
-updatedAt: 2026-09-11
-tags: ["Astro", "Veka", "建站"]
-isPinned: true
-growthStage: "budding"
+title: 用 Astro + Veka 搭建本站
+description: 记录本站的技术选型与搭建过程：Astro 静态站点、Veka 主题、GitHub Pages 自动化部署。
+createdAt: '2026-09-11'
+updatedAt: '2026-09-23'
+tags: [Astro, Veka, 建站]
+isPinned: false
+growthStage: budding
 ---
 
 ## 为什么是 Astro
