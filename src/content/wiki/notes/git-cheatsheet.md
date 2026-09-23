@@ -1,11 +1,11 @@
 ---
-title: "Git 常用命令速查"
-description: "日常开发中最常用的一组 Git 命令：分支、回退、暂存、查看历史与远程操作。"
-createdAt: 2026-09-11
-updatedAt: 2026-09-11
-tags: ["Git", "速查", "工具"]
+title: Git 常用命令速查
+description: 日常开发中最常用的一组 Git 命令：分支、回退、暂存、查看历史与远程操作。
+createdAt: '2026-09-11'
+updatedAt: '2026-09-23'
+tags: [Git, 速查, 工具]
 isPinned: false
-growthStage: "evergreen"
+growthStage: evergreen
 ---
 
 ## 日常提交
@@ -54,8 +54,3 @@ git remote -v
 git fetch --prune
 git push origin master      # 本站推送到 master 后会自动触发 Pages 部署
 ```
-
-## 相关笔记
-
-- [[astro-veka-setup]]
-- [[markdown-syntax]]
