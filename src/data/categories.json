@@ -1,6 +1,7 @@
 {
-  "overview": "总览",
   "notes": "笔记",
+  "overview": "总览",
   "projects": "项目",
-  "read": "读书"
+  "read": "读书",
+  "test": "测试"
 }
