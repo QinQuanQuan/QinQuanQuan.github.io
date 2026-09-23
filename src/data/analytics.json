@@ -1,4 +1,4 @@
 {
-  "enabled": true,
+  "enabled": false,
   "endpoint": "https://blogmanage.quanquantest.bond/api/track"
 }
