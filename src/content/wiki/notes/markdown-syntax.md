@@ -1,11 +1,11 @@
 ---
-title: "Markdown 速查"
-description: "本站在用的 Markdown 与扩展语法速查：标题、表格、代码块、提示块、双链与公式。"
-createdAt: 2026-09-11
-updatedAt: 2026-09-11
-tags: ["Markdown", "速查", "写作"]
+title: Markdown 速查
+description: 本站在用的 Markdown 与扩展语法速查：标题、表格、代码块、提示块、双链与公式。
+createdAt: '2026-09-11'
+updatedAt: '2026-09-23'
+tags: [Markdown, 速查, 写作]
 isPinned: false
-growthStage: "evergreen"
+growthStage: evergreen
 ---
 
 写笔记时最常用的一些语法，随手记一份，省得每次都去翻文档。
@@ -73,8 +73,3 @@ console.log(`共 ${notes.length} 篇笔记`);
 $$
 \int_{0}^{1} x^2 \, dx = \frac{1}{3}
 $$
-
-## 相关笔记
-
-- [[git-cheatsheet]]
-- [[astro-veka-setup]]
