@@ -2,6 +2,8 @@ import { folderLabel } from "./labels";
 
 export type Breadcrumb = {
   label: string;
+  /** 可点击的上级路径；当前页（最后一段）没有 href */
+  href?: string;
 };
 
 function humanize(segment: string): string {
@@ -16,10 +18,13 @@ function humanize(segment: string): string {
 
 export function generateBreadcrumbs(path: string): Breadcrumb[] {
   const segments = path.split("/").filter(Boolean);
-  return segments.map((segment) => {
-    const label = humanize(segment);
+  return segments.map((segment, index) => {
+    const isLast = index === segments.length - 1;
     return {
-      label,
+      label: humanize(segment),
+      href: isLast
+        ? undefined
+        : "/" + segments.slice(0, index + 1).join("/"),
     };
   });
 }

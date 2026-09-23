@@ -1,0 +1,80 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import NoteCard from "@/components/wiki/NoteCard.astro";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { folderLabel } from "@/lib/wiki/labels";
+import { SITE } from "@/lib/site-config";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("wiki");
+  const grouped = new Map<string, typeof notes>();
+
+  for (const note of notes) {
+    const segments = note.id.split("/");
+    if (segments.length < 2) continue; // 根级笔记（index.md 等）不属于任何类别
+    const category = segments[0];
+    if (!grouped.has(category)) grouped.set(category, []);
+    grouped.get(category)!.push(note);
+  }
+
+  return [...grouped.entries()].map(([category, items]) => ({
+    params: { category },
+    props: { category, items },
+  }));
+}
+
+const { category, items } = Astro.props as {
+  category: string;
+  items: CollectionEntry<"wiki">[];
+};
+
+const label = folderLabel(category);
+const sorted = [...items].sort(
+  (a, b) => b.data.updatedAt.valueOf() - a.data.updatedAt.valueOf(),
+);
+---
+
+<BaseLayout
+  title={`${label} - ${SITE.name}`}
+  description={`${label}分类下的全部笔记，共 ${sorted.length} 篇。`}
+>
+  <main class="mx-auto max-w-5xl px-4 py-16 md:py-24" data-pagefind-body>
+    <Breadcrumb class="mb-6">
+      <BreadcrumbList>
+        <BreadcrumbItem><a href="/">首页</a></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem><a href="/wiki">知识库</a></BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>{label}</BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+
+    <header class="mb-12">
+      <h1 class="text-3xl font-bold tracking-tight md:text-4xl">{label}</h1>
+      <p class="mt-3 text-muted-foreground">
+        共 {sorted.length}
+        篇笔记 · 目录 <span class="font-mono text-sm">{category}/</span>
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        sorted.map((note) => (
+          <NoteCard
+            id={note.id}
+            title={note.data.title}
+            description={note.data.description}
+            growthStage={note.data.growthStage}
+          />
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>

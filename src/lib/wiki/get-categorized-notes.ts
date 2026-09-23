@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import categoryOrder from "@/data/category-order.json";
 
 export interface CategorizedNote {
   name: string;
@@ -11,6 +12,9 @@ export interface CategorizedNote {
   }>;
 }
 
+/** 首页分组的显示顺序，来自 src/data/category-order.json（后台「类别」页可改） */
+const ORDER: string[] = categoryOrder as string[];
+
 function getCategory(noteId: string): string {
   return noteId === "index" ? "overview" : noteId.split("/")[0];
 }
@@ -22,21 +26,13 @@ function byUpdatedAtDesc(
   return b.updatedAt.valueOf() - a.updatedAt.valueOf();
 }
 
-/**
- * 首页分组（类别）的显示顺序：
- * 固定排在前面的分组，其余按目录名字母序排列。
- * overview 对应知识库首页（src/content/wiki/index.md）。
- */
-const CATEGORY_ORDER = ["overview"];
-
+/** 先按配置里的顺序，未配置的分组排在后面并按目录名字母序 */
 function byCategoryOrder(a: { name: string }, b: { name: string }): number {
-  const ai = CATEGORY_ORDER.indexOf(a.name);
-  const bi = CATEGORY_ORDER.indexOf(b.name);
-  if (ai !== bi) {
-    if (ai === -1) return 1;
-    if (bi === -1) return -1;
-    return ai - bi;
-  }
+  const ai = ORDER.indexOf(a.name);
+  const bi = ORDER.indexOf(b.name);
+  if (ai !== -1 && bi !== -1) return ai - bi;
+  if (ai !== -1) return -1;
+  if (bi !== -1) return 1;
   return a.name.localeCompare(b.name);
 }
 

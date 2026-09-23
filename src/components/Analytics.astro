@@ -1,0 +1,34 @@
+---
+/**
+ * 访问统计上报：把当前页面路径用 sendBeacon 发给自建后台的 /api/track。
+ * 配置在 src/data/analytics.json（后台「设置」页可改，也可整体关掉）。
+ * 不写 Cookie，服务端只存 IP 的加盐哈希与 UA，用于去重与统计。
+ */
+import analytics from "@/data/analytics.json";
+
+const { enabled, endpoint } = analytics as { enabled: boolean; endpoint: string };
+---
+
+{
+  enabled && endpoint && (
+    <script is:inline define:vars={{ endpoint }}>
+      (() => {
+        const send = () => {
+          try {
+            const data = new URLSearchParams();
+            data.set("p", location.pathname + location.search);
+            data.set("r", document.referrer || "");
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(endpoint, data);
+            } else {
+              fetch(endpoint, { method: "POST", body: data, keepalive: true });
+            }
+          } catch (error) {
+            /* 统计失败不影响页面 */
+          }
+        };
+        document.addEventListener("astro:page-load", send);
+      })();
+    </script>
+  )
+}

@@ -25,7 +25,12 @@ const categories = await getCategorizedNotes();
       categories.map(({ name, notes }) => (
         <section class="mb-14">
           <h2 class="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            {folderLabel(name)} &middot; {notes.length} 篇笔记
+            <a
+              href={name === "overview" ? "/wiki" : `/wiki/${name}`}
+              class="transition-colors hover:text-foreground"
+            >
+              {folderLabel(name)} &middot; {notes.length} 篇笔记
+            </a>
           </h2>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {notes.map((note) => (

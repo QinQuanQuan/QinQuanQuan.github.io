@@ -4,6 +4,7 @@ import "@/assets/styles/global.css";
 import BaseHead from "@/components/shell/BaseHead.astro";
 import Header from "@/components/Header.astro";
 import Search from "@/components/search/Search.astro";
+import Analytics from "@/components/Analytics.astro";
 import { SITE } from "@/lib/site-config";
 
 interface Props {
@@ -47,5 +48,6 @@ const {
     <Header />
     <slot />
     <Search />
+    <Analytics />
   </body>
 </html>
