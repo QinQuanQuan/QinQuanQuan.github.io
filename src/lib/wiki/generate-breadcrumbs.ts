@@ -6,6 +6,9 @@ export type Breadcrumb = {
   href?: string;
 };
 
+/** 「/wiki」这一级只是知识库的容器，不在面包屑里显示 */
+const HIDDEN_SEGMENTS = new Set(["wiki"]);
+
 function humanize(segment: string): string {
   const known = folderLabel(segment);
   if (known !== segment) return known;
@@ -18,13 +21,17 @@ function humanize(segment: string): string {
 
 export function generateBreadcrumbs(path: string): Breadcrumb[] {
   const segments = path.split("/").filter(Boolean);
-  return segments.map((segment, index) => {
+  const crumbs: Breadcrumb[] = [];
+
+  segments.forEach((segment, index) => {
     const isLast = index === segments.length - 1;
-    return {
+    if (HIDDEN_SEGMENTS.has(segment) && !isLast) return;
+
+    crumbs.push({
       label: humanize(segment),
-      href: isLast
-        ? undefined
-        : "/" + segments.slice(0, index + 1).join("/"),
-    };
+      href: isLast ? undefined : "/" + segments.slice(0, index + 1).join("/"),
+    });
   });
+
+  return crumbs;
 }

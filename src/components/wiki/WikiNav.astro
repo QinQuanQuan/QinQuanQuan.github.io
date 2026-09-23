@@ -3,9 +3,12 @@ import { getCollection } from "astro:content";
 import WikiNavNode, { type TreeNode } from "./WikiNavNode.astro";
 import { folderLabel } from "@/lib/wiki/labels";
 import { sortTreeNodes } from "@/lib/wiki/tree-utils";
+import categoryOrder from "@/data/category-order.json";
 
 const allNotes = await getCollection("wiki");
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
+/** 首页分组顺序，同样用于左侧导航的分类顺序（后台「类别」页可调） */
+const ORDER: string[] = categoryOrder as string[];
 
 function humanize(slug: string): string {
   const label = folderLabel(slug);
@@ -61,7 +64,23 @@ function buildTree(notes: typeof allNotes): Record<string, TreeNode> {
 }
 
 const root = buildTree(allNotes);
-const sortedRootKeys = sortTreeNodes(root);
+
+/** 根级排序：先按 category-order.json 的顺序，未列出的保持原有规则 */
+function sortRootKeys(children: Record<string, TreeNode>): string[] {
+  const keys = sortTreeNodes(children);
+  const orderKey = (key: string) => (key === "index" ? "overview" : key);
+
+  return keys.sort((a, b) => {
+    const ai = ORDER.indexOf(orderKey(a));
+    const bi = ORDER.indexOf(orderKey(b));
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return 0;
+  });
+}
+
+const sortedRootKeys = sortRootKeys(root);
 ---
 
 <nav class="space-y-0.5">

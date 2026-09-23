@@ -18,6 +18,9 @@ const { enabled, endpoint } = analytics as { enabled: boolean; endpoint: string 
             const data = new URLSearchParams();
             data.set("p", location.pathname + location.search);
             data.set("r", document.referrer || "");
+            data.set("s", `${screen.width}x${screen.height}@${window.devicePixelRatio || 1}`);
+            data.set("l", navigator.language || "");
+            data.set("tz", Intl.DateTimeFormat().resolvedOptions().timeZone || "");
             if (navigator.sendBeacon) {
               navigator.sendBeacon(endpoint, data);
             } else {
