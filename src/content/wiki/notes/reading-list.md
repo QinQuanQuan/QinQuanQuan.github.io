@@ -1,11 +1,11 @@
 ---
-title: "待读清单"
-description: "想读、正在读、读完待整理的书籍与文章列表，持续更新。"
-createdAt: 2026-09-11
-updatedAt: 2026-09-11
-tags: ["阅读", "清单"]
+title: 待读清单
+description: 想读、正在读、读完待整理的书籍与文章列表，持续更新。
+createdAt: '2026-09-11'
+updatedAt: '2026-09-23'
+tags: [阅读, 清单]
 isPinned: false
-growthStage: "seedling"
+growthStage: seedling
 ---
 
 一份会不断变化的书单，读完一本就补一段笔记。
@@ -32,4 +32,3 @@ growthStage: "seedling"
 ## 相关笔记
 
 - [[digital-garden]]
-- [[astro-veka-setup]]
