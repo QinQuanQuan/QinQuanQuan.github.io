@@ -6,8 +6,6 @@ updatedAt: '2026-11-09'
 tags: [零信任, ZTNA, 访问控制]
 isPinned: false
 growthStage: seedling
-category: zero-trust
-slug: caddy-forward-auth-ztna-pep
 ---
 
 ## 问题不在拦不住，在说不清
